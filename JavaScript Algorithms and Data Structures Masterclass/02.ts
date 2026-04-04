@@ -17,25 +17,22 @@ function same(arr1: number[], arr2: number[]): number | boolean {
     } else {
         const set = new Set();
         for (var i = 0; i < arr1.length; i++) {
-            const square = arr1[i] * arr1[i];
-            // from arr1
+            const square = arr1[i] ** 2;
             if (set.has(square)) {
                 set.delete(square)
             } else {
                 set.add(square);
             }
-            // from arr2
+        
             if (set.has(arr2[i])) {
                 set.delete(arr2[i]);
             } else {
                 set.add(arr2[i]);
             }
-            
         }
-       
-        return false
+        return set.size === 0;
     }
-}
+} 
 
 var output1 = same([1, 2, 3], [4, 1, 9]);
 var output2 = same([1, 2, 3], [1, 9]);
