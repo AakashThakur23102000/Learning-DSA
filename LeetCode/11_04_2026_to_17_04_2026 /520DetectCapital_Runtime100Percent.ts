@@ -38,4 +38,3 @@ function detectCapitalUse(str: string): boolean {
 
     return isWordCorrect;
 };
-
