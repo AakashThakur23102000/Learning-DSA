@@ -24,7 +24,18 @@ findPair([1, 2, 3], 0) // false
 
 function findPair(arr: number[], n: number): boolean {
     // Write your code here
-    return false;
+
+    if (arr.length < 2) return false;
+    let flag = false;
+    for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+            if (Math.abs(arr[i] - arr[j]) === Math.abs(n)) {
+                flag = true;
+                break;
+            }
+        }
+    }
+    return flag;
 }
 
 const testCases: TestCase<[number[], number], boolean>[] = [
