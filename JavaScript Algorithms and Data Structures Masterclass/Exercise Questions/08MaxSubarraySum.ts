@@ -21,9 +21,23 @@ Time Complexity - O(N)
 Space Complexity - O(1)
 */
 
-function maxSubarraySum(arr: number[], num: number): number | null {
+function maxSubarraySum(arr: number[], n: number): number | null {
     // Write your code here
-    return null;
+    let max = -Infinity;
+    let sum = 0;
+    if (arr.length < n) { return null }
+    for (var i = 0; i < arr.length; i++) {
+        if (i < n) {
+            sum = sum + arr[i];
+            max = sum;
+        } else {
+            sum = sum + arr[i] - arr[i - n];
+            if (max < sum) {
+                max = sum;
+            }
+        }
+    }
+    return max;
 }
 
 const testCases: TestCase<[number[], number], number | null>[] = [
@@ -55,7 +69,7 @@ const testCases: TestCase<[number[], number], number | null>[] = [
     // Mixed positive and negative
     { input: [[4, -1, 2, 1], 2], expected: 3 },
     { input: [[4, -1, 2, 1], 3], expected: 5 },
-    { input: [[-2, 1, -3, 4, -1, 2, 1, -5, 4], 3], expected: 6 },
+    { input: [[-2, 1, -3, 4, -1, 2, 1, -5, 4], 3], expected: 5 },
     { input: [[5, -2, 3, 1, -1, 2], 3], expected: 6 },
 
     // Zero cases
